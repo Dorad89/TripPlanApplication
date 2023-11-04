@@ -9,8 +9,10 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String firsName;
-    private String lastNme;
+    private String firstName;
+    private String lastName;
+
+    private long roleId;
 
     public long getId() {
         return id;
@@ -20,20 +22,20 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirsName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastNme() {
-        return lastNme;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastNme(String lastNme) {
-        this.lastNme = lastNme;
+    public void setLastNme(String lastName) {
+        this.lastName = lastName;
     }
 
     public long getRoleId() {
@@ -44,5 +46,5 @@ public class UserEntity {
         this.roleId = roleId;
     }
 
-    private long roleId;
+
 }
