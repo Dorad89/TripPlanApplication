@@ -6,7 +6,7 @@ import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "Trips")
+@Table(name = "trips")
 public class TripsEntity {
 
     @Id
@@ -20,7 +20,7 @@ public class TripsEntity {
     private Date departureDate;
     private Date arrivalDate;
     private String status;
-    private long statusId;
+    private long tripStatusId;
 
     public long getId() {
         return id;
@@ -87,11 +87,11 @@ public class TripsEntity {
     }
 
     public long getStatusId() {
-        return statusId;
+        return tripStatusId;
     }
 
     public void setStatusId(long statusId) {
-        this.statusId = statusId;
+        this.tripStatusId = statusId;
     }
 
 }

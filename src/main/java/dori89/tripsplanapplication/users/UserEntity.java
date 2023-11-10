@@ -3,7 +3,7 @@ package dori89.tripsplanapplication.users;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
@@ -11,6 +11,8 @@ public class UserEntity {
     private long id;
     private String firstName;
     private String lastName;
+
+    private String emailAddress;
 
     private long roleId;
 
@@ -26,7 +28,7 @@ public class UserEntity {
         return firstName;
     }
 
-    public void setFirsName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -34,8 +36,16 @@ public class UserEntity {
         return lastName;
     }
 
-    public void setLastNme(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public long getRoleId() {
@@ -45,6 +55,5 @@ public class UserEntity {
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
-
 
 }

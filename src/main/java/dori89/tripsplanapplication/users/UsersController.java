@@ -11,25 +11,23 @@ import java.util.Optional;
 @RestController
 public class UsersController {
 
-    private UserRepository userRepository;
+    private UsersRepository usersRepository;
     @Autowired
-    public UsersController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UsersController(UsersRepository usersRepository) {
+
+        this.usersRepository = usersRepository;
     }
 
     @GetMapping(path = "/users")
     public List<UserEntity> findAll() {
 
-        return userRepository.findAll();
+        return usersRepository.findAll();
     }
     @GetMapping(path = "/users/{id}")
     public UserEntity findById(@PathVariable long id){
 
-        Optional<UserEntity> userEntityOptional = userRepository.findById(id);
+        Optional<UserEntity> userEntityOptional = usersRepository.findById(id);
 
-        if (userEntityOptional.isPresent()){
-           return userEntityOptional.get();
-        }
-        return null;
+        return userEntityOptional.orElse(null);
     }
 }

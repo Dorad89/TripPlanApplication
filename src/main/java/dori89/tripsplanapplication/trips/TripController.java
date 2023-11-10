@@ -9,16 +9,16 @@ import java.util.List;
 @RestController
 public class TripController {
 
-    private TripRepository tripRepository;
+    private TripsRepository tripsRepository;
 
     @Autowired
-    public TripController(TripRepository tripRepository) {
-        this.tripRepository = tripRepository;
+    public TripController(TripsRepository tripsRepository) {
+        this.tripsRepository = tripsRepository;
     }
 
     @GetMapping(path = "/trips")
     public List<TripsEntity> findAll(){
 
-        return tripRepository.findAll();
+        return tripsRepository.findAll();
     }
 }
