@@ -1,12 +1,11 @@
 package dori89.tripsplanapplication.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class UsersController {
@@ -29,5 +28,17 @@ public class UsersController {
         Optional<UserEntity> userEntityOptional = usersRepository.findById(id);
 
         return userEntityOptional.orElse(null);
+    }
+
+    @PostMapping(path = "/users")
+    public UserEntity save(@RequestBody UserEntity userEntity){
+
+        return usersRepository.save(userEntity);
+    }
+
+    @GetMapping(path = "/users", params = "name")
+    public Set<UserEntity> findByName(@RequestParam String name){
+
+        return usersRepository.findByFirstNameIgnoreCase(name);
     }
 }
