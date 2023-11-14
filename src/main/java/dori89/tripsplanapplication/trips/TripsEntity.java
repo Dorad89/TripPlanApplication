@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.commons.BaseEntity;
 import jakarta.persistence.*;
 
 import javax.xml.crypto.Data;
@@ -7,11 +8,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "trips")
-public class TripsEntity {
+public class TripsEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private String tripReason;
 
     private String tripDescription;
@@ -21,14 +19,6 @@ public class TripsEntity {
     private Date arrivalDate;
     private String status;
     private long tripStatusId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getTripReason() {
         return tripReason;

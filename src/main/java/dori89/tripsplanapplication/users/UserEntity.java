@@ -1,28 +1,17 @@
 package dori89.tripsplanapplication.users;
 
+import dori89.tripsplanapplication.commons.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
     private String firstName;
     private String lastName;
-
     private String emailAddress;
-
     private long roleId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
