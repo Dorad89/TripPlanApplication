@@ -9,23 +9,23 @@ import java.util.Optional;
 @RestController
 public class TripController {
 
-    private TripsRepository tripsRepository;
+    private TripsService tripsService;
 
     @Autowired
-    public TripController(TripsRepository tripsRepository) {
-        this.tripsRepository = tripsRepository;
+    public TripController(TripsService tripsService) {
+        this.tripsService = tripsService;
     }
 
     @GetMapping(path = "/trips")
     public List<TripsEntity> findAll(){
 
-        return tripsRepository.findAll();
+        return tripsService.findAll();
     }
 
     @GetMapping(path = "/trips/{id}")
     public TripsEntity findById(@PathVariable long id){
 
-        Optional<TripsEntity> tripsEntityOptional = tripsRepository.findById(id);
+        Optional<TripsEntity> tripsEntityOptional = tripsService.findById(id);
 
         return tripsEntityOptional.orElse(null);
     }
@@ -33,6 +33,6 @@ public class TripController {
     @PostMapping(path = "/trips")
     public TripsEntity save(@RequestBody TripsEntity tripsEntity){
 
-        return tripsRepository.save(tripsEntity);
+        return tripsService.save(tripsEntity);
     }
 }
