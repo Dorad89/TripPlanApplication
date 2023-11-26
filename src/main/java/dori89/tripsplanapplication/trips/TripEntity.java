@@ -3,12 +3,11 @@ package dori89.tripsplanapplication.trips;
 import dori89.tripsplanapplication.commons.BaseEntity;
 import jakarta.persistence.*;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity
 @Table(name = "trips")
-public class TripsEntity extends BaseEntity {
+public class TripEntity extends BaseEntity {
 
     private String tripReason;
 

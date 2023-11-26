@@ -17,17 +17,17 @@ public class TripsServiceImpl implements TripsService{
     }
 
     @Override
-    public List<TripsEntity> findAll() {
+    public List<TripEntity> findAll() {
         return tripsRepository.findAll();
     }
 
     @Override
-    public Optional<TripsEntity> findById(long id) {
+    public Optional<TripEntity> findById(long id) {
         return tripsRepository.findById(id);
     }
 
     @Override
-    public TripsEntity save(TripsEntity tripsEntity) {
-        return tripsRepository.save(tripsEntity);
+    public TripEntity save(TripEntity tripEntity) {
+        return tripsRepository.save(tripEntity);
     }
 }

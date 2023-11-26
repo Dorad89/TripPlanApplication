@@ -7,32 +7,32 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class TripController {
+public class TripsController {
 
     private TripsService tripsService;
 
     @Autowired
-    public TripController(TripsService tripsService) {
+    public TripsController(TripsService tripsService) {
         this.tripsService = tripsService;
     }
 
     @GetMapping(path = "/trips")
-    public List<TripsEntity> findAll(){
+    public List<TripEntity> findAll(){
 
         return tripsService.findAll();
     }
 
     @GetMapping(path = "/trips/{id}")
-    public TripsEntity findById(@PathVariable long id){
+    public TripEntity findById(@PathVariable long id){
 
-        Optional<TripsEntity> tripsEntityOptional = tripsService.findById(id);
+        Optional<TripEntity> tripsEntityOptional = tripsService.findById(id);
 
         return tripsEntityOptional.orElse(null);
     }
 
     @PostMapping(path = "/trips")
-    public TripsEntity save(@RequestBody TripsEntity tripsEntity){
+    public TripEntity save(@RequestBody TripEntity tripEntity){
 
-        return tripsService.save(tripsEntity);
+        return tripsService.save(tripEntity);
     }
 }
