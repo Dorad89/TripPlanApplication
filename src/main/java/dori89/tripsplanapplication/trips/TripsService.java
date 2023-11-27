@@ -9,4 +9,6 @@ public interface TripsService {
     Optional<TripEntity> findById(long id);
     TripEntity save(TripEntity tripEntity);
     TripEntity update(TripEntity tripEntity);
+
+    void deleteById(long id);
 }

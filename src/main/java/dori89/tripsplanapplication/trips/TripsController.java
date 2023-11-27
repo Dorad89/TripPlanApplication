@@ -1,6 +1,7 @@
 package dori89.tripsplanapplication.trips;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,11 @@ public class TripsController {
 
         tripEntity.setId(id);
         return tripsService.update(tripEntity);
+    }
+    @DeleteMapping(path = "trips/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable long id){
+
+        tripsService.deleteById(id);
     }
 }
