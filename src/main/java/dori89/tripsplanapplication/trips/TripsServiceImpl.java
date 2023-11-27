@@ -30,4 +30,9 @@ public class TripsServiceImpl implements TripsService{
     public TripEntity save(TripEntity tripEntity) {
         return tripsRepository.save(tripEntity);
     }
+
+    @Override
+    public TripEntity update(TripEntity tripEntity) {
+        return tripsRepository.save(tripEntity);
+    }
 }

@@ -8,4 +8,5 @@ public interface TripsService {
     List<TripEntity> findAll();
     Optional<TripEntity> findById(long id);
     TripEntity save(TripEntity tripEntity);
+    TripEntity update(TripEntity tripEntity);
 }

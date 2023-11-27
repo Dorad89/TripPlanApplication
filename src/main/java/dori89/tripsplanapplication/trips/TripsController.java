@@ -35,4 +35,11 @@ public class TripsController {
 
         return tripsService.save(tripEntity);
     }
+
+    @PutMapping(path = "/trips/{id}")
+    public TripEntity update(@RequestBody TripEntity tripEntity, @PathVariable long id){
+
+        tripEntity.setId(id);
+        return tripsService.update(tripEntity);
+    }
 }
