@@ -1,6 +1,7 @@
 package dori89.tripsplanapplication.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,5 +41,11 @@ public class UsersController {
     public Set<UserEntity> findByName(@RequestParam String name){
 
         return usersService.findByName(name);
+    }
+    @DeleteMapping(path = "users/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable long id){
+
+        usersService.deleteById(id);
     }
 }

@@ -7,4 +7,6 @@ public interface FlightsService {
     List<FlightEntity> findAll();
 
     FlightEntity save(FlightEntity flightEntity);
+
+    void deleteById(long id);
 }

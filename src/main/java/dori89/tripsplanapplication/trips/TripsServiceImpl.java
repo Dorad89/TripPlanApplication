@@ -1,10 +1,12 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.commons.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +37,9 @@ public class TripsServiceImpl implements TripsService{
 
     @Override
     public TripEntity update(TripEntity tripEntity) {
+
+        tripEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        //tripEntity.setUpdatedBy(userEntity.getId);
         return tripsRepository.save(tripEntity);
     }
 
@@ -42,9 +47,16 @@ public class TripsServiceImpl implements TripsService{
     public void deleteById(long id) {
 
         Optional<TripEntity> tripEntityOptional = tripsRepository.findById(id);
-        if (tripEntityOptional.isPresent()){
-            tripsRepository.deleteById(id);
-        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student with id " + id + " not found!");
 
+        if (tripEntityOptional.isPresent()){
+
+         //tripsRepository.deleteById(id);
+            TripEntity tripEntity = tripEntityOptional.get();
+            tripEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            //tripEntity.setUpdatedBy(userEntity.getId);
+            tripEntity.setStatus("Deleted");
+            tripsRepository.save(tripEntity);
+
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student with id " + id + " not found!");
     }
 }

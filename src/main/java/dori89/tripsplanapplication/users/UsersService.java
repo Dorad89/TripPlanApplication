@@ -10,4 +10,6 @@ public interface UsersService {
     Optional<UserEntity> findById(long id);
     UserEntity save(UserEntity userEntity);
     Set<UserEntity> findByName(String name);
+
+    void deleteById(long id);
 }

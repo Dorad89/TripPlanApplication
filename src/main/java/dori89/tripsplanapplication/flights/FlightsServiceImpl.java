@@ -1,9 +1,14 @@
 package dori89.tripsplanapplication.flights;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightsServiceImpl implements FlightsService{
@@ -22,5 +27,20 @@ public class FlightsServiceImpl implements FlightsService{
     @Override
     public FlightEntity save(FlightEntity flightEntity) {
         return flightsRepository.save(flightEntity);
+    }
+
+    @Override
+    public void deleteById(long id) {
+        Optional<FlightEntity> flightEntityOptional = flightsRepository.findById(id);
+
+       if (flightEntityOptional.isPresent()){
+           FlightEntity flightEntity = flightEntityOptional.get();
+
+           flightEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+           flightEntity.setStatus("Deleted");
+           flightsRepository.save(flightEntity);
+           //flightsRepository.deleteById(id);
+
+       } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Flight with id " + id + " not found!");
     }
 }

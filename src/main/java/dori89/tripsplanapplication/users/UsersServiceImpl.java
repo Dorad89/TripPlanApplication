@@ -3,6 +3,7 @@ package dori89.tripsplanapplication.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -35,5 +36,20 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public Set<UserEntity> findByName(String name) {
         return usersRepository.findByFirstNameIgnoreCase(name);
+    }
+
+    @Override
+    public void deleteById(long id) {
+
+        Optional<UserEntity> userEntityOptional = usersRepository.findById(id);
+
+        if (userEntityOptional.isPresent()){
+
+            //userRepository.deleteById(id);
+            UserEntity userEntity = userEntityOptional.get();
+            userEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            userEntity.setStatus("Deleted");
+            usersRepository.save(userEntity);
+        }
     }
 }
