@@ -13,5 +13,5 @@ public interface TripsService {
 
     void deleteById(long id);
 
-    Set<TripEntity> findByReason(long tripReasonId);
+    Set<TripEntity> findByReasonAndOrStatus(long tripReasonId,long tripStatusId);
 }

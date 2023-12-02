@@ -62,7 +62,7 @@ public class TripsServiceImpl implements TripsService{
     }
 
     @Override
-    public Set<TripEntity> findByReason(long tripReasonId) {
-       return tripsRepository.findByTripReasonId(tripReasonId);
+    public Set<TripEntity> findByReasonAndOrStatus(long tripReasonId, long tripStatusId) {
+       return tripsRepository.findByTripReasonIdOrTripStatusId(tripReasonId, tripStatusId);
     }
 }

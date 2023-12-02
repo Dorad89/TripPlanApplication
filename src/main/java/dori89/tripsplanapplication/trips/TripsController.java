@@ -52,7 +52,7 @@ public class TripsController {
     }
 
     @GetMapping(path = "/trips", params = "tripReasonId")
-    public Set<TripEntity> findByReason(@RequestParam long tripReasonId){
-        return tripsService.findByReason(tripReasonId);
+    public Set<TripEntity> findByReasonAndOrStatus(@RequestParam long tripReasonId,@RequestParam(required = false) long tripStatusId){
+        return tripsService.findByReasonAndOrStatus(tripReasonId,tripStatusId);
     }
 }
