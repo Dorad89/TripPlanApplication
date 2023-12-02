@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class TripsController {
@@ -48,5 +49,10 @@ public class TripsController {
     public void delete(@PathVariable long id){
 
         tripsService.deleteById(id);
+    }
+
+    @GetMapping(path = "/trips", params = "tripReason")
+    public Set<TripEntity> findByReason(@RequestParam String tripReason){
+        return tripsService.findByReason(tripReason);
     }
 }

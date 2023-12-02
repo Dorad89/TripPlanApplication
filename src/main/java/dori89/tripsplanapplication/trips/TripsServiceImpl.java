@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class TripsServiceImpl implements TripsService{
@@ -58,5 +59,10 @@ public class TripsServiceImpl implements TripsService{
             tripsRepository.save(tripEntity);
 
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student with id " + id + " not found!");
+    }
+
+    @Override
+    public Set<TripEntity> findByReason(String tripReason) {
+       return tripsRepository.findByTripReasonContainingIgnoreCase(tripReason);
     }
 }

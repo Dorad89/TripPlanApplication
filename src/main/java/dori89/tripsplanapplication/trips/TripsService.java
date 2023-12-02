@@ -2,6 +2,7 @@ package dori89.tripsplanapplication.trips;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface TripsService {
 
@@ -11,4 +12,6 @@ public interface TripsService {
     TripEntity update(TripEntity tripEntity);
 
     void deleteById(long id);
+
+    Set<TripEntity> findByReason(String tripReason);
 }
