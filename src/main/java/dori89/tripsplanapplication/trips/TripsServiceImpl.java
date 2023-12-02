@@ -62,7 +62,7 @@ public class TripsServiceImpl implements TripsService{
     }
 
     @Override
-    public Set<TripEntity> findByReason(String tripReason) {
-       return tripsRepository.findByTripReasonContainingIgnoreCase(tripReason);
+    public Set<TripEntity> findByReason(long tripReasonId) {
+       return tripsRepository.findByTripReasonId(tripReasonId);
     }
 }

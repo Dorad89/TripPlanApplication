@@ -9,7 +9,6 @@ import java.util.Date;
 @Table(name = "trips")
 public class TripEntity extends BaseEntity {
 
-    private String tripReason;
 
     private String tripDescription;
     private String departureCity;
@@ -19,12 +18,22 @@ public class TripEntity extends BaseEntity {
     private String status;
     private long tripStatusId;
 
-    public String getTripReason() {
-        return tripReason;
+    private long tripReasonId;
+
+    public long getTripStatusId() {
+        return tripStatusId;
     }
 
-    public void setTripReason(String tripReason) {
-        this.tripReason = tripReason;
+    public void setTripStatusId(long tripStatusId) {
+        this.tripStatusId = tripStatusId;
+    }
+
+    public long getTripReasonId() {
+        return tripReasonId;
+    }
+
+    public void setTripReasonId(long tripReasonId) {
+        this.tripReasonId = tripReasonId;
     }
 
     public String getTripDescription() {

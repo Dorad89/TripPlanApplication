@@ -51,8 +51,8 @@ public class TripsController {
         tripsService.deleteById(id);
     }
 
-    @GetMapping(path = "/trips", params = "tripReason")
-    public Set<TripEntity> findByReason(@RequestParam String tripReason){
-        return tripsService.findByReason(tripReason);
+    @GetMapping(path = "/trips", params = "tripReasonId")
+    public Set<TripEntity> findByReason(@RequestParam long tripReasonId){
+        return tripsService.findByReason(tripReasonId);
     }
 }
