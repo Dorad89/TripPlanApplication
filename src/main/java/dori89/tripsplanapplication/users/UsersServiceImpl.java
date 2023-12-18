@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.users;
 
+import dori89.tripsplanapplication.users.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

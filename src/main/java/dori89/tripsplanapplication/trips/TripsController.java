@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.trips.models.TripEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

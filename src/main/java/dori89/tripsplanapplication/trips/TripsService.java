@@ -1,5 +1,7 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.trips.models.TripEntity;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;

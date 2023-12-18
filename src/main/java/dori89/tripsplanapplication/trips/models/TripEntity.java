@@ -1,4 +1,4 @@
-package dori89.tripsplanapplication.trips;
+package dori89.tripsplanapplication.trips.models;
 
 import dori89.tripsplanapplication.commons.BaseEntity;
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ public class TripEntity extends BaseEntity {
     private String destinationCity;
     private Date departureDate;
     private Date arrivalDate;
-    private String status;
+//    private String status;
     private long tripStatusId;
 
     private long tripReasonId;
@@ -76,13 +76,13 @@ public class TripEntity extends BaseEntity {
         this.arrivalDate = arrivalDate;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//    public String getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 
     public long getStatusId() {
         return tripStatusId;

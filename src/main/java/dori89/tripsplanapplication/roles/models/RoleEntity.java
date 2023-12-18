@@ -1,4 +1,4 @@
-package dori89.tripsplanapplication.roles;
+package dori89.tripsplanapplication.roles.models;
 
 import dori89.tripsplanapplication.commons.BaseEntity;
 import jakarta.persistence.Entity;

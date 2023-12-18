@@ -1,13 +1,8 @@
-package dori89.tripsplanapplication.users;
+package dori89.tripsplanapplication.users.models;
 
-import dori89.tripsplanapplication.commons.BaseEntity;
-import jakarta.persistence.*;
+import dori89.tripsplanapplication.commons.BaseDto;
 
-@Entity
-@Table(name = "users")
-public class UserEntity extends BaseEntity {
-
-
+public class UserDto extends BaseDto {
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -44,5 +39,4 @@ public class UserEntity extends BaseEntity {
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
-
 }

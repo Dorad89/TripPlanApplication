@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.roles;
 
+import dori89.tripsplanapplication.roles.models.RoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

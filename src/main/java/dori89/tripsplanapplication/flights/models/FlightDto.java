@@ -1,20 +1,14 @@
-package dori89.tripsplanapplication.flights;
+package dori89.tripsplanapplication.flights.models;
 
-import dori89.tripsplanapplication.commons.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import dori89.tripsplanapplication.commons.BaseDto;
 
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "flights")
-public class FlightEntity extends BaseEntity {
+public class FlightDto extends BaseDto {
 
     private Long tripId;
     private Long userId;
     private String departureCity;
-    private Timestamp departureDate;
-    private Timestamp arrivalDate;
 
     public Long getTripId() {
         return tripId;
@@ -55,4 +49,7 @@ public class FlightEntity extends BaseEntity {
     public void setArrivalDate(Timestamp arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
+
+    private Timestamp departureDate;
+    private Timestamp arrivalDate;
 }
