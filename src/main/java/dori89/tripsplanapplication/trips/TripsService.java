@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.trips.models.TripDto;
 import dori89.tripsplanapplication.trips.models.TripEntity;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface TripsService {
     void deleteById(long id);
 
     Set<TripEntity> findByReasonAndOrStatus(long tripReasonId,long tripStatusId);
+
+    TripDto partialUpdate(TripDto tripDto, Long id);
 }

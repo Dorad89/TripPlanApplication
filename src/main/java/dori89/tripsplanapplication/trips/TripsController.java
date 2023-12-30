@@ -1,5 +1,6 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.trips.models.TripDto;
 import dori89.tripsplanapplication.trips.models.TripEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,5 +56,11 @@ public class TripsController {
     @GetMapping(path = "/trips", params = "tripReasonId")
     public Set<TripEntity> findByReasonAndOrStatus(@RequestParam long tripReasonId,@RequestParam(required = false) long tripStatusId){
         return tripsService.findByReasonAndOrStatus(tripReasonId,tripStatusId);
+    }
+    @PatchMapping(path = "/trips/{id}")
+    public TripDto partialUpdate(@PathVariable Long id, @RequestBody TripDto tripDto){
+
+        tripDto.setId(id);
+        return tripsService.partialUpdate(tripDto, id);
     }
 }

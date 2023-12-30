@@ -1,5 +1,7 @@
 package dori89.tripsplanapplication.trips;
 
+import dori89.tripsplanapplication.trips.commons.TripMapper;
+import dori89.tripsplanapplication.trips.models.TripDto;
 import dori89.tripsplanapplication.trips.models.TripEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +18,11 @@ public class TripsServiceImpl implements TripsService{
 
 
     private TripsRepository tripsRepository;
+    private TripMapper tripMapper;
     @Autowired
-    public TripsServiceImpl(TripsRepository tripsRepository) {
+    public TripsServiceImpl(TripsRepository tripsRepository, TripMapper tripMapper) {
         this.tripsRepository = tripsRepository;
+        this.tripMapper = tripMapper;
     }
 
     @Override
@@ -64,5 +68,28 @@ public class TripsServiceImpl implements TripsService{
     @Override
     public Set<TripEntity> findByReasonAndOrStatus(long tripReasonId, long tripStatusId) {
        return tripsRepository.findByTripReasonIdOrTripStatusId(tripReasonId, tripStatusId);
+    }
+
+    @Override
+    public TripDto partialUpdate(TripDto tripDto, Long id) {
+
+        Optional <TripEntity> tripEntityOptional = tripsRepository.findById(id);
+        if (tripEntityOptional.isPresent()){
+
+            TripEntity tripEntity = tripEntityOptional.get();
+
+            tripMapper.mapDtoToEntity(tripDto, tripEntity);
+
+            tripEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            //tripEntity.setUpdatedBy(userEntity.getId);
+
+            TripEntity patchedEntity = tripsRepository.save(tripEntity);
+
+            return tripMapper.mapEntityToDto(patchedEntity);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Trip with id " + id + " did not found. ");
+        }
+
     }
 }
